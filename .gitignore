@@ -1,0 +1,19 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Extracted DICOMs & Datasets
+extracted_dicoms/
+sample_dataset_export/
+dicom_dataset_export/
+dataset_export/
+*.zip
+
+# OS & IDE
+.ds_store
+.vscode/
+.idea/
+
+# Local powershell wrapper wrapper
+powershell.bat
