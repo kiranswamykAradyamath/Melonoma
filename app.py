@@ -17,6 +17,19 @@ import create_dataset as cd
 importlib.reload(dp)
 importlib.reload(cd)
 
+COLORMAP_OPTIONS = [
+    "Rainbow Spectrum",
+    "Gist Rainbow",
+    "Turbo Rainbow",
+    "Spectral Multi-Color",
+    "HSV Multi-Color",
+    "Jet Thermal",
+    "Hot Heatmap",
+    "Bone",
+    "Viridis",
+    "Grayscale"
+]
+
 # Set Page Config
 st.set_page_config(
     page_title="MedDICOM Studio - Viewer & Dataset Builder",
@@ -187,19 +200,7 @@ with tab1:
 
         with col_opts:
             window_preset = st.selectbox("Window Preset", list(dp.WINDOW_PRESETS.keys()), index=0)
-            colormap_options = [
-                "Rainbow Spectrum",
-                "Gist Rainbow",
-                "Turbo Rainbow",
-                "Spectral Multi-Color",
-                "HSV Multi-Color",
-                "Jet Thermal",
-                "Hot Heatmap",
-                "Bone",
-                "Viridis",
-                "Grayscale"
-            ]
-            colormap_choice = st.selectbox("🌈 Colormap Palette (Multi-Color)", colormap_options, index=0)
+            colormap_choice = st.selectbox("🌈 Colormap Palette (Multi-Color)", COLORMAP_OPTIONS, index=0)
 
         # Slice / Frame Slider
         num_frames = meta.get("number_of_frames", 1)
@@ -516,7 +517,7 @@ with tab2:
             dataset_name = st.text_input("Dataset Directory Name", value="dicom_dataset_export")
             export_format = st.selectbox("Export Image Format", ["png", "jpg", "npy", "png16"], help="png: 8-bit, png16: 16-bit raw, npy: numpy array, jpg: compressed RGB")
             window_preset_export = st.selectbox("Windowing Preset", list(dp.WINDOW_PRESETS.keys()), index=0)
-            colormap_export = st.selectbox("🌈 Export Colormap Palette", colormap_options, index=0)
+            colormap_export = st.selectbox("🌈 Export Colormap Palette", COLORMAP_OPTIONS, index=0)
 
         with col_d2:
             st.markdown("**Train / Val / Test Split Ratios**")
